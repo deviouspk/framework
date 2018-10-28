@@ -136,3 +136,15 @@ class TestNotificationBroadCastedNow extends Notification
         return (new BroadcastMessage([]))->onConnection('sync');
     }
 }
+
+class BroadcastAsTestNotification extends Notification
+{
+    public function toArray($notifiable)
+    {
+        return ['invoice_id' => 1];
+    }
+    
+    public function broadcastAs(){
+        return 'invoice.added';   
+    }
+}
